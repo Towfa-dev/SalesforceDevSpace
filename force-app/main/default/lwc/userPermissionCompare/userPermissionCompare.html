@@ -1,0 +1,20 @@
+<!-- userPermissionComparer.html -->
+<template>
+    <div>
+        <lightning-input label="Buscar usuario 1" value={searchTerm1} onchange={handleSearchTerm1Change}></lightning-input>
+        <lightning-combobox name="Usuario 1" label="Usuario 1" value={user1} options={user1Options} onchange={handleUser1Change} ></lightning-combobox>
+    </div>
+    <div>
+        <lightning-input label="Buscar usuario 2" value={searchTerm2} onchange={handleSearchTerm2Change}></lightning-input>
+        <lightning-combobox name="Usuario 2" label="Usuario 2" value={user2} options={user2Options} onchange={handleUser2Change} ></lightning-combobox>
+    </div>
+    <lightning-button label="Comparar" onclick={compareUsers}></lightning-button>
+
+    <template if:true={comparisonResults}>
+        <h2>Permiso igual</h2>
+        <lightning-datatable data={comparisonResults.equal} columns={columns} key-field="permission"></lightning-datatable>
+
+        <h2>Permiso diferente</h2>
+        <lightning-datatable data={comparisonResults.different} columns={columns} key-field="permission"></lightning-datatable>
+    </template>
+</template>

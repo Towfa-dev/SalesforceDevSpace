@@ -1,0 +1,36 @@
+<!-- miTablaLWC.html -->
+<template>
+    <div class="slds-scrollable">
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+            <thead>
+                <tr>
+                    <th scope="col"><div class="slds-truncate" title="Texto">Texto</div></th>
+                    <th scope="col"><div class="slds-truncate" title="Número">Número</div></th>
+                    <th scope="col"><div class="slds-truncate" title="Picklist">Picklist</div></th>
+                    <th scope="col"><div class="slds-truncate" title="Búsqueda">Búsqueda</div></th>
+                    <th scope="col"><div class="slds-truncate" title="Checkbox">Checkbox</div></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Puedes usar un loop para iterar a través de tus registros -->
+                <template for:each={registros} for:item="registro">
+                    <tr key={registro.id}>
+                        <td>{registro.texto}</td>
+                        <td>{registro.numero}</td>
+                        <td>
+                            <!-- Aquí va tu componente picklist personalizado -->
+                            <c-custom-picklist onopcionseleccionada={manejarOpcionSeleccionada}></c-custom-picklist>
+                        </td>
+                        <td>
+                            <!-- Aquí va tu componente de búsqueda personalizado -->
+                            <c-custom-lookup onregistroseleccionado={handleRegistroSeleccionado}></c-custom-lookup>
+                        </td>
+                        <td>
+                            <!-- Aquí va tu componente checkbox personalizado -->
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</template>
